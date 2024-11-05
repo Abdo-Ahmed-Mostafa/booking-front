@@ -1,3 +1,4 @@
+import HomeDeals from "@/components/UI/homeDeals/HomeDeals";
 import { Button } from "../components/imports";
 
 export const metadata = {
@@ -8,6 +9,7 @@ export default function Home() {
   return (
     <div className="mb-auto">
       <Button variant="">Welcome</Button>
+      <HomeDeals />
     </div>
   );
 }
