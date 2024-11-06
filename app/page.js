@@ -8,7 +8,6 @@ export const metadata = {
 export default function Home() {
   return (
     <div className="mb-auto">
-      <Button variant="">Welcome</Button>
       <HomeDeals />
     </div>
   );
