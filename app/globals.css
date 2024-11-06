@@ -13,7 +13,6 @@
   }
 }
 
-
 @keyframes dash {
   from,
   to {
@@ -22,4 +21,26 @@
   50% {
     stroke-dashoffset: 0;
   }
+}
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tab:hover {
+  transform: scale(1.1);
+}
+
+.tab:active {
+  transform: scale(0.95);
+}
+
+.tab:focus {
+  outline: none;
 }
