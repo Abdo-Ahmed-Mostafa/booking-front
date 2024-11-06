@@ -4,13 +4,14 @@ import {
   TabsBody,
   Tab,
   TabPanel,
+  Link,
 } from "@/components/imports";
 
 const HomeDeals = () => {
   const data = [
     {
       label: "Flash Deals",
-      value: "FlashDeals",
+      value: "Flash Deals",
       desc: `It really matters and then like it really doesn't matter.
           What matters is the people who are sparked by it. And the people 
           who are like offended by it, it doesn't matter.`,
@@ -30,17 +31,27 @@ const HomeDeals = () => {
     },
   ];
   return (
-    <Tabs value="html" className="max-w-[40rem]">
+    <Tabs value="Flash Deals" className="">
       <TabsHeader
-        className="bg-transparent"
+        className="bg-transparent flex justify-between items-center"
         indicatorProps={{
-          className: "bg-gray-900/10 shadow-none !text-gray-900",
-        }}>
-        {data.map(({ label, value }) => (
-          <Tab key={value} value={value}>
-            {label}
-          </Tab>
-        ))}
+          className: "bg-mainBlue shadow-none rounded-full py-1.5 ",
+        }}
+      >
+        <div className="w-fit flex">
+          {data.map(({ label, value }) => (
+            <Tab
+              key={value}
+              value={value}
+              className="lg:w-28 bg-bgGrey text-mainBlue font-medium rounded-full py-1.5 mx-3"
+            >
+              {label}
+            </Tab>
+          ))}
+        </div>
+        <Link href={""} className="">
+          View all
+        </Link>
       </TabsHeader>
       <TabsBody>
         {data.map(({ value, desc }) => (

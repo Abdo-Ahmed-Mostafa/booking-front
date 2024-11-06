@@ -16,6 +16,7 @@ module.exports = withMT({
         background: "var(--background)",
         foreground: "var(--foreground)",
         mainBlue: "#0054a6",
+        bgGrey: "#e7ebee",
       },
     },
   },
