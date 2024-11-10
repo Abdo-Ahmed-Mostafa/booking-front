@@ -1,6 +1,5 @@
-import HomeDeals from "@/components/UI/homeDeals/HomeDeals";
-import { Button } from "../components/imports";
-import Flight from "./flight/page";
+import MainHero from "@/components/UI/Home/MainHero";
+import HomeDeals from "@/components/UI/Home/homeDeals/HomeDeals";
 
 export const metadata = {
   title: "Home",
@@ -9,7 +8,7 @@ export const metadata = {
 export default function Home() {
   return (
     <div className="mb-auto">
-      <Flight />
+      <MainHero />
       <HomeDeals />
     </div>
   );

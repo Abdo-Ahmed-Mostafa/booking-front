@@ -36,15 +36,13 @@ const HomeDeals = () => {
         className="bg-transparent flex justify-between items-center"
         indicatorProps={{
           className: "bg-mainBlue shadow-none rounded-full py-1.5 ",
-        }}
-      >
+        }}>
         <div className="w-fit flex">
           {data.map(({ label, value }) => (
             <Tab
               key={value}
               value={value}
-              className="lg:w-28 bg-bgGrey text-mainBlue font-medium rounded-full py-1.5 mx-3"
-            >
+              className="lg:w-28 bg-bgGrey text-mainBlue font-medium rounded-full py-1.5 mx-3">
               {label}
             </Tab>
           ))}
