@@ -14,6 +14,8 @@ import {
   TabsBody,
   Tab,
   TabPanel,
+  Select,
+  Option,
 } from "@material-tailwind/react";
 import {
   IoClose,
@@ -57,4 +59,6 @@ export {
   useEffect,
   Link,
   Image,
+  Select,
+  Option,
 };
