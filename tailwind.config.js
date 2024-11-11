@@ -18,6 +18,9 @@ module.exports = withMT({
         mainBlue: "#0054a6",
         bgGrey: "#e7ebee",
       },
+      backgroundImage: {
+        hero: "url('/hero.png')",
+      },
     },
   },
   plugins: [],

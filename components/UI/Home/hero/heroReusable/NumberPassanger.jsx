@@ -6,7 +6,6 @@ import {
   Menu,
   MenuHandler,
   MenuList,
-  MenuItem,
   IoAdd,
   AiOutlineMinus,
   IoMan,
@@ -39,11 +38,10 @@ const NumberPassanger = () => {
 
   return (
     <div className="relative">
-      {/* Dropdown Trigger Button */}
       <Menu open={isOpen} handler={() => setIsOpen(!isOpen)}>
         <MenuHandler>
           <Button
-            className="bg-black bg-opacity-20 pr-3 pl-6 py-2 borderborder-white"
+            className="bg-black bg-opacity-20 pr-3 pl-6 py-2 borderborder-white w-full"
             onClick={() => setIsOpen(!isOpen)}>
             <div className="flex gap-5">
               {totalPassengers}
@@ -51,8 +49,6 @@ const NumberPassanger = () => {
             </div>
           </Button>
         </MenuHandler>
-
-        {/* Dropdown Menu */}
         <MenuList className="p-4 w-80 bg-white rounded-lg shadow-lg space-y-4 z-10">
           <div className="flex justify-between items-center">
             <span className="font-semibold">No. of Passengers</span>
@@ -62,8 +58,6 @@ const NumberPassanger = () => {
               <IoClose className="h-5 w-5" />
             </button>
           </div>
-
-          {/* Passenger Categories */}
           {[
             { label: "Adults", age: "(age 12 and over)", type: "adults" },
             { label: "Children", age: "(age 2 - 11)", type: "children" },
@@ -89,8 +83,6 @@ const NumberPassanger = () => {
                   <div className="text-gray-500 text-sm">{category.age}</div>
                 </div>
               </div>
-
-              {/* Increment and Decrement Buttons */}
               <div className="flex items-center space-x-2">
                 <button
                   onClick={(e) => {

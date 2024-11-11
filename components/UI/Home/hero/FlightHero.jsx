@@ -1,11 +1,15 @@
+import FlightClass from "./heroReusable/FlightClass";
 import NumberPassanger from "./heroReusable/NumberPassanger";
 import Ways from "./Ways";
 
 const FlightHero = ({ pathname }) => {
   return (
-    <div className="grid grid-cols-2 w-full items-center">
+    <div className="flex lg:flex-row lg:gap-0 gap-5 flex-col w-full items-center lg:justify-evenly justify-center">
       <Ways />
-      <NumberPassanger />
+      <div className="flex gap-3 lg:flex-row flex-col w-1/2">
+        <NumberPassanger />
+        <FlightClass />
+      </div>
     </div>
   );
 };
