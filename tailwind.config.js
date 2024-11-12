@@ -19,7 +19,7 @@ module.exports = withMT({
         bgGrey: "#e7ebee",
       },
       backgroundImage: {
-        hero: "url('/hero.png')",
+        hero: "url('/hero.webp')",
       },
     },
   },

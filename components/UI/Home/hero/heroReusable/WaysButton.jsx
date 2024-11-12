@@ -13,7 +13,8 @@ const WaysButton = ({ id, label }) => {
       />
       <label
         htmlFor={id}
-        className="items-center w-full px-6 py-2 text-white bg-black bg-opacity-20 border-none rounded-full cursor-pointer peer-checked:bg-mainBlue peer-checked:text-white">
+        className="items-center w-full px-6 py-2 text-white text-sm font-medium bg-black bg-opacity-20 border-none rounded-full cursor-pointer peer-checked:bg-mainBlue peer-checked:text-white"
+      >
         {label}
       </label>
     </li>

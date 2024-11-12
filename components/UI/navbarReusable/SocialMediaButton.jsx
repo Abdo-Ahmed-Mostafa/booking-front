@@ -6,7 +6,7 @@ const SocialMediaButton = ({ url, title, icon }) => {
       <Button
         variant="outlined"
         size="sm"
-        className={` flex gap-1.5 p-0 items-center text-white border-none focus:ring-0 focus-visible:ring-0 focus-visible:outline-none`}>
+        className={`capitalize flex gap-1.5 p-0 items-center text-white border-none focus:ring-0 focus-visible:ring-0 focus-visible:outline-none`}>
         {icon}
         {title}
       </Button>
