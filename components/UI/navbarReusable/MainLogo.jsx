@@ -1,5 +1,5 @@
 import { Link, Image } from "@/components/imports";
-import logo from "@/public/logo.png";
+import logo from "@/public/logo.webp";
 
 const MainLogo = ({ width, height }) => {
   return (

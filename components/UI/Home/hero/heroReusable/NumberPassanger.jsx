@@ -37,24 +37,26 @@ const NumberPassanger = () => {
   const totalPassengers = `${passengers.adults} Adults, ${passengers.children} Children, ${passengers.infants} Infants`;
 
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <Menu open={isOpen} handler={() => setIsOpen(!isOpen)}>
         <MenuHandler>
           <Button
-            className="bg-black bg-opacity-20 pr-3 pl-6 py-2 borderborder-white w-full"
-            onClick={() => setIsOpen(!isOpen)}>
-            <div className="flex gap-5">
+            className="bg-black bg-opacity-20 pr-3 pl-6 py-2 border-none w-full"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <div className="flex gap-5 items-center justify-center">
               {totalPassengers}
               {isOpen ? <IoChevronUp /> : <IoChevronDown />}
             </div>
           </Button>
         </MenuHandler>
-        <MenuList className="p-4 w-80 bg-white rounded-lg shadow-lg space-y-4 z-10">
+        <MenuList className="p-4 w-80 bg-white rounded-lg shadow-lg space-y-4 ">
           <div className="flex justify-between items-center">
             <span className="font-semibold">No. of Passengers</span>
             <button
               onClick={() => setIsOpen(false)}
-              className="text-gray-500 hover:text-red-500">
+              className="text-gray-500 hover:text-red-500"
+            >
               <IoClose className="h-5 w-5" />
             </button>
           </div>
@@ -65,7 +67,8 @@ const NumberPassanger = () => {
           ].map((category) => (
             <div
               key={category.type}
-              className="flex items-center justify-between">
+              className="flex items-center justify-between"
+            >
               <div className="flex gap-1">
                 {category.label == "Adults" && (
                   <IoMan className="text-blue-500 h-7 w-7" />
@@ -89,7 +92,8 @@ const NumberPassanger = () => {
                     e.stopPropagation();
                     handleDecrement(category.type);
                   }}
-                  className="bg-blue-100 text-blue-600 rounded-full p-1">
+                  className="bg-blue-100 text-blue-600 rounded-full p-1"
+                >
                   <AiOutlineMinus className="h-4 w-4" />
                 </button>
                 <span>{passengers[category.type]}</span>
@@ -98,7 +102,8 @@ const NumberPassanger = () => {
                     e.stopPropagation();
                     handleIncrement(category.type);
                   }}
-                  className="bg-mainBlue text-white rounded-full p-1">
+                  className="bg-mainBlue text-white rounded-full p-1"
+                >
                   <IoAdd className="h-4 w-4" />
                 </button>
               </div>
