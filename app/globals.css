@@ -44,3 +44,27 @@
 .tab:focus {
   outline: none;
 }
+@keyframes fly {
+  0% {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  80% {
+    top: 10%;
+    left: 90%;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    top: -10%;
+    left: 100%;
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.animate-fly {
+  animation: fly 2s ease-in-out forwards;
+}
