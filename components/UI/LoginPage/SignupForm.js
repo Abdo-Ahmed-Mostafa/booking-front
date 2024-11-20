@@ -1,72 +1,100 @@
 "use client";
+import { Button, Input } from "@material-tailwind/react";
+import Link from "next/link";
 import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
-const SignupForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const SignupForm = ({ toggleAnimation }) => {
+  const [data, setData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    currentCity: "",
+  });
 
+  const handelFormSend = async (e) => {
+    e.preventDefault();
+    if (data.password !== data.confirmPassword) {
+      return toast.error("confirmPassword is incorrect");
+    }
+    const sendData = await fetch(`/api/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const response = await sendData.json();
+    if (response.statues != 201) {
+      toast.error(response.message);
+    }
+  };
   return (
     <div className="selection:bg-indigo-500 selection:text-white">
       <div className="flex justify-center items-center">
         <div className="p-8 flex-1">
           <div className="mx-auto overflow-hidden">
-            <div className="p-8">
-              <h1 className="text-5xl font-bold text-indigo-600">
+            <div className="p-8 flex flex-col gap-8">
+              <h1 className="text-5xl font-bold text-indigo-600 text-center">
                 Create account
               </h1>
-
-              <form className="mt-12" action="" method="POST">
-                <div className="relative">
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-indigo-600"
-                    placeholder="Name"
-                  />
-                  <label
-                    htmlFor="name"
-                    className="absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
-                  >
-                    Name
-                  </label>
-                </div>
-                <div className="mt-10 relative">
-                  <input
-                    id="email"
-                    name="email"
-                    type="text"
-                    className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-indigo-600"
-                    placeholder="john@doe.com"
-                  />
-                  <label
-                    htmlFor="email"
-                    className="absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
-                  >
-                    Email address
-                  </label>
-                </div>
-                <div className="mt-10 relative">
-                  <input
-                    id="password"
-                    type="password"
-                    name="password"
-                    className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-indigo-600"
-                    placeholder="Password"
-                  />
-                  <label
-                    htmlFor="password"
-                    className="absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
-                  >
-                    Password
-                  </label>
-                </div>
-
-                <input
-                  type="submit"
-                  value="Sign up"
-                  className="mt-20 px-8 py-4 uppercase rounded-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-center block w-full focus:outline-none focus:ring focus:ring-offset-2 focus:ring-indigo-500 focus:ring-opacity-80 cursor-pointer"
+              <form
+                onSubmit={(e) => handelFormSend(e)}
+                className="flex  flex-col gap-6"
+              >
+                <Input
+                  variant="standard"
+                  label="Name"
+                  placeholder="Name"
+                  value={data.name}
+                  onChange={(e) => setData({ ...data, name: e.target.value })}
                 />
+                <Input
+                  variant="standard"
+                  label="Email"
+                  placeholder="Email"
+                  value={data.email}
+                  onChange={(e) => setData({ ...data, email: e.target.value })}
+                />
+                <Input
+                  variant="standard"
+                  label="Password"
+                  placeholder="Password"
+                  value={data.password}
+                  type="password"
+                  onChange={(e) =>
+                    setData({ ...data, password: e.target.value })
+                  }
+                />
+                <Input
+                  variant="standard"
+                  label="Confirm Password"
+                  placeholder="Confirm Password"
+                  value={data.confirmPassword}
+                  type="password"
+                  onChange={(e) =>
+                    setData({ ...data, confirmPassword: e.target.value })
+                  }
+                />
+                <Input
+                  variant="standard"
+                  label="Current City"
+                  placeholder="Current City"
+                  value={data.currentCity}
+                  onChange={(e) =>
+                    setData({ ...data, currentCity: e.target.value })
+                  }
+                />
+                <Button className="bg-mainBlue" type="submit">
+                  Create account
+                </Button>
+                <p
+                  className="text-mainBlue text-center cursor-pointer block md:hidden"
+                  onClick={() => toggleAnimation()}
+                >
+                  Already have an account ?
+                </p>
               </form>
             </div>
           </div>

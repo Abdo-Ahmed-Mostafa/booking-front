@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import HomeNav from "@/components/UI/navbar/HomeNav";
 import Footer from "@/components/UI/footer/Footer";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
         suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen justify-between`}
       >
+        <Toaster />
         <HomeNav />
         {children}
         <Footer />
