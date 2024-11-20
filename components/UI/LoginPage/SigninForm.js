@@ -1,65 +1,75 @@
 "use client";
+import { Button, Input } from "@material-tailwind/react";
+import Link from "next/link";
 import { useState } from "react";
 
-const SigninForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
+const SigninForm = ({ toggleAnimation }) => {
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+  });
+  const handelFormSend = async (e) => {
+    e.preventDefault();
+    const sendData = await fetch(`/api/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const response = await sendData.json();
+    if (response.statues != 201) {
+      toast.error(response.message);
+    }
+  };
   return (
     <div className="selection:bg-indigo-500 selection:text-white">
       <div className="flex justify-center items-center">
         <div className="p-8 flex-1">
           <div className="mx-auto overflow-hidden">
             <div className="p-8">
-              <h1 className="text-5xl font-bold text-indigo-600">
+              <h1 className="text-5xl font-bold text-mainBlue">
                 Welcome back!
               </h1>
 
-              <form className="mt-12" action="" method="POST">
-                <div className="relative">
-                  <input
-                    id="signin-email"
-                    name="email"
-                    type="text"
-                    className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-indigo-600"
-                    placeholder="john@doe.com"
-                  />
-                  <label
-                    htmlFor="email"
-                    className="absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
-                  >
-                    Email address
-                  </label>
-                </div>
-                <div className="mt-10 relative">
-                  <input
-                    id="signin-password"
-                    type="password"
-                    name="password"
-                    className="peer h-10 w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:outline-none focus:border-indigo-600"
-                    placeholder="Password"
-                  />
-                  <label
-                    htmlFor="password"
-                    className="absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm"
-                  >
-                    Password
-                  </label>
-                </div>
-
-                <input
-                  type="submit"
-                  value="Sign in"
-                  className="mt-20 px-8 py-4 uppercase rounded-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-center block w-full focus:outline-none focus:ring focus:ring-offset-2 focus:ring-indigo-500 focus:ring-opacity-80 cursor-pointer"
-                />
-              </form>
-              <a
-                href="#"
-                className="mt-4 block text-sm text-center font-medium text-indigo-600 hover:underline focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              <form
+                className="mt-12 flex flex-col gap-8"
+                onSubmit={(e) => handelFormSend(e)}
               >
-                {" "}
-                Forgot your password?{" "}
-              </a>
+                <Input
+                  variant="standard"
+                  label="Email"
+                  placeholder="Email"
+                  value={data.email}
+                  onChange={(e) => setData({ ...data, email: e.target.value })}
+                />
+                <Input
+                  variant="standard"
+                  label="Password"
+                  placeholder="Password"
+                  type="password"
+                  value={data.password}
+                  onChange={(e) =>
+                    setData({ ...data, password: e.target.value })
+                  }
+                />
+                <Button className="bg-mainBlue" type="submit">
+                  Create account
+                </Button>
+              </form>
+
+              <Link
+                href={""}
+                className="mt-4 block text-lg text-center font-medium text-mainBlue hover:underline focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              >
+                Forgot your password?
+              </Link>
+              <p
+                onClick={() => toggleAnimation()}
+                className="mt-4 block md:hidden text-lg text-center font-medium text-mainBlue cursor-pointer "
+              >
+                Don&apos;t have an account ?
+              </p>
             </div>
           </div>
         </div>
